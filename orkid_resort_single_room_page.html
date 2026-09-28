@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Room - Orkid Resort</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f5f5f5;
+      }
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+      header h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+      }
+      nav {
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      .breadcrumb {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 0.95rem;
+      }
+      .breadcrumb a {
+        color: #667eea;
+        text-decoration: none;
+      }
+      .breadcrumb span {
+        color: #999;
+        margin: 0 8px;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .gallery-section {
+        margin-bottom: 40px;
+      }
+      .main-gallery {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+      .main-image {
+        border-radius: 20px;
+        overflow: hidden;
+        height: 500px;
+      }
+      .main-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .main-image:hover img {
+        transform: scale(1.05);
+      }
+      .side-images {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 15px;
+      }
+      .side-image {
+        border-radius: 20px;
+        overflow: hidden;
+        height: 242.5px;
+      }
+      .side-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .content-section {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+      }
+      .room-info {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+      .room-badge {
+        display: inline-block;
+        padding: 8px 20px;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        color: #333;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .room-title {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+      .room-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+      }
+      .room-meta {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .meta-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+        color: #333;
+        margin: 30px 0 20px;
+        font-weight: 600;
+      }
+      .description {
+        color: #666;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        margin-bottom: 30px;
+      }
+      .value-box {
+        background: linear-gradient(
+          135deg,
+          rgba(67, 233, 123, 0.1),
+          rgba(56, 249, 215, 0.1)
+        );
+        padding: 30px;
+        border-radius: 15px;
+        margin: 30px 0;
+        border: 2px dashed #43e97b;
+      }
+      .value-box h3 {
+        color: #43e97b;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .value-list {
+        list-style: none;
+      }
+      .value-list li {
+        padding: 12px 0;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .value-list li::before {
+        content: '💚';
+        font-size: 1.3rem;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        transition: all 0.3s;
+      }
+      .feature-item:hover {
+        background: #f0f0f0;
+        transform: translateX(5px);
+      }
+      .amenities-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+      }
+      .amenity-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        color: #555;
+      }
+      .amenity-item::before {
+        content: '✓';
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+      .booking-card {
+        background: white;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 100px;
+      }
+      .price-section {
+        text-align: center;
+        padding: 25px;
+        background: linear-gradient(
+          135deg,
+          rgba(67, 233, 123, 0.1),
+          rgba(56, 249, 215, 0.1)
+        );
+        border-radius: 15px;
+        margin-bottom: 30px;
+      }
+      .price {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #43e97b;
+      }
+      .best-value {
+        display: inline-block;
+        padding: 5px 15px;
+        background: #43e97b;
+        color: white;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+      .booking-form .form-group {
+        margin-bottom: 20px;
+      }
+      .booking-form label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: 600;
+      }
+      .booking-form input,
+      .booking-form select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+      .booking-form input:focus,
+      .booking-form select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+      .book-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 10px;
+      }
+      .book-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+      .savings-info {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .savings-info strong {
+        color: #856404;
+      }
+      .reviews-section {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin-top: 40px;
+      }
+      .rating-summary {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+        padding: 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(67, 233, 123, 0.1),
+          rgba(56, 249, 215, 0.1)
+        );
+        border-radius: 15px;
+      }
+      .rating-number {
+        font-size: 4rem;
+        font-weight: 700;
+        color: #43e97b;
+      }
+      .rating-stars {
+        font-size: 1.5rem;
+        color: #ffd700;
+      }
+      .review-card {
+        padding: 25px;
+        border: 2px solid #f0f0f0;
+        border-radius: 15px;
+        margin-bottom: 20px;
+      }
+      .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #43e97b, #38f9d7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+      }
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+      .reviewer-info {
+        display: flex;
+        gap: 15px;
+      }
+      footer {
+        background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .social-links a {
+        color: #667eea;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: rgba(102, 126, 234, 0.1);
+      }
+      @media (max-width: 1024px) {
+        .content-section {
+          grid-template-columns: 1fr;
+        }
+        .booking-card {
+          position: static;
+        }
+      }
+      @media (max-width: 768px) {
+        .main-gallery {
+          grid-template-columns: 1fr;
+        }
+        .room-info,
+        .booking-card {
+          padding: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ORKID RESORT</h1>
+      <nav>
+        <ul>
+          <li><a href="orkid_resort_improved.html">Home</a></li>
+          <li><a href="orkid_resort_rooms.html">Room</a></li>
+          <li><a href="orkid_resort_contact.html">Contact</a></li>
+          <li><a href="orkid_resort_about_us_page.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="breadcrumb">
+      <a href="orkid_resort_improved.html">Home</a><span>›</span
+      ><a href="orkid_resort_rooms.html">Bilik</a><span>›</span
+      ><span>Single Room</span>
+    </div>
+
+    <div class="container">
+      <section class="gallery-section">
+        <div class="main-gallery">
+          <div class="main-image">
+            <img
+              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"
+              alt="Single Room"
+            />
+          </div>
+          <div class="side-images">
+            <div class="side-image">
+              <img
+                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600"
+                alt="Workspace"
+              />
+            </div>
+            <div class="side-image">
+              <img
+                src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600"
+                alt="City View"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="content-section">
+        <div class="room-info">
+          <span class="room-badge">💚 BEST VALUE</span>
+          <h1 class="room-title">Single Room</h1>
+          <p class="room-subtitle">
+            Selesa, berkualiti dan berbaloi - sempurna untuk pelancong solo atau
+            bisnes
+          </p>
+
+          <div class="room-meta">
+            <div class="meta-item">
+              <div class="meta-icon">📐</div>
+              <div><strong>39 sqm</strong><br /><small>419 sqf</small></div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-icon">👤</div>
+              <div>
+                <strong>1-2 Tetamu</strong><br /><small>Flexible</small>
+              </div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-icon">🛏️</div>
+              <div>
+                <strong>Single/Twin</strong><br /><small
+                  >Pilihan tersedia</small
+                >
+              </div>
+            </div>
+          </div>
+
+          <h2 class="section-title">Tentang Bilik Ini</h2>
+          <p class="description">
+            Single Room kami menawarkan nilai terbaik tanpa menjejaskan kualiti
+            dan keselesaan. Dengan ruang 39 meter persegi, bilik ini dilengkapi
+            semua kemudahan moden yang anda perlukan. Pemandangan indah ke
+            bandar yang menarik menjadikan penginapan anda lebih bermakna.
+            Pilihan sempurna untuk pelancong solo, perjalanan bisnes, atau
+            mereka yang mencari penginapan berkualiti dengan harga berpatutan.
+          </p>
+
+          <div class="value-box">
+            <h3>💚 Kenapa Pilih Single Room?</h3>
+            <ul class="value-list">
+              <li>Harga paling ekonomikal tanpa kompromi kualiti</li>
+              <li>Ruang yang cukup luas dan praktikal</li>
+              <li>Semua kemudahan asas tersedia</li>
+              <li>Lokasi strategik dengan pemandangan bandar</li>
+              <li>Sesuai untuk penginapan jangka panjang</li>
+              <li>Free WiFi berkelajuan tinggi untuk kerja</li>
+            </ul>
+          </div>
+
+          <h2 class="section-title">Ciri-Ciri Utama</h2>
+          <div class="features-grid">
+            <div class="feature-item">
+              <span style="font-size: 1.5rem">🏙️</span
+              ><span style="font-size: 0.95rem; color: #555"
+                >Pemandangan Bandar Menarik</span
+              >
+            </div>
+            <div class="feature-item">
+              <span style="font-size: 1.5rem">💼</span
+              ><span style="font-size: 0.95rem; color: #555"
+                >Meja Kerja Lengkap</span
+              >
+            </div>
+            <div class="feature-item">
+              <span style="font-size: 1.5rem">🚿</span
+              ><span style="font-size: 0.95rem; color: #555">Shower Moden</span>
+            </div>
+            <div class="feature-item">
+              <span style="font-size: 1.5rem">📱</span
+              ><span style="font-size: 0.95rem; color: #555"
+                >Smart Workspace</span
+              >
+            </div>
+          </div>
+
+          <h2 class="section-title">Kemudahan Bilik</h2>
+          <div class="amenities-list">
+            <div class="amenity-item">WiFi Percuma</div>
+            <div class="amenity-item">LED TV 43"</div>
+            <div class="amenity-item">Mini Fridge</div>
+            <div class="amenity-item">Kettle Elektrik</div>
+            <div class="amenity-item">Peti Keselamatan</div>
+            <div class="amenity-item">Air Conditioner</div>
+            <div class="amenity-item">Tuala & Linen Bersih</div>
+            <div class="amenity-item">Toiletries Asas</div>
+            <div class="amenity-item">Pengering Rambut</div>
+            <div class="amenity-item">Telefon</div>
+            <div class="amenity-item">Meja & Kerusi</div>
+            <div class="amenity-item">Almari Pakaian</div>
+          </div>
+        </div>
+
+        <aside class="booking-card">
+          <div class="price-section">
+            <div style="font-size: 0.9rem; color: #666">Dari</div>
+            <div class="price">RM 320</div>
+            <div style="font-size: 1rem; color: #999">per malam</div>
+            <span class="best-value">✨ BEST VALUE!</span>
+          </div>
+
+          <div class="savings-info">
+            <strong>💡 Jimat sehingga RM 530!</strong><br />
+            <small>Berbanding Executive Room</small>
+          </div>
+
+          <form class="booking-form">
+            <div class="form-group">
+              <label>Tarikh Daftar Masuk</label><input type="date" required />
+            </div>
+            <div class="form-group">
+              <label>Tarikh Daftar Keluar</label><input type="date" required />
+            </div>
+            <div class="form-group">
+              <label>Pilihan Katil</label>
+              <select required>
+                <option value="">Pilih jenis katil</option>
+                <option value="single">Single Bed</option>
+                <option value="twin">Twin Beds</option>
+              </select>
+            </div>
+            <button type="submit" class="book-btn">Tempah Sekarang</button>
+          </form>
+          <p
+            style="
+              text-align: center;
+              margin-top: 20px;
+              font-size: 0.9rem;
+              color: #999;
+            "
+          >
+            Perlu bantuan?
+            <a
+              href="hubungi_orkidresort.html"
+              style="color: #667eea; font-weight: 600"
+              >Hubungi kami</a
+            >
+          </p>
+        </aside>
+      </div>
+
+      <section class="reviews-section">
+        <h2 class="section-title">Ulasan Tetamu</h2>
+        <div class="rating-summary">
+          <div style="text-align: center">
+            <div class="rating-number">4.7</div>
+            <div class="rating-stars">★★★★★</div>
+            <div style="font-size: 0.9rem; color: #666">
+              Berdasarkan 156 ulasan
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">AM</div>
+              <div>
+                <h4>Amir Mustafa</h4>
+                <span style="font-size: 0.85rem; color: #999"
+                  >1 minggu lalu</span
+                >
+              </div>
+            </div>
+            <div style="color: #ffd700">★★★★★</div>
+          </div>
+          <p style="color: #666; line-height: 1.7">
+            Sangat worth it! Bilik bersih, selesa dan semua yang diperlukan ada.
+            WiFi pun laju. Sesuai untuk business trip. Harga pun reasonable.
+            Will definitely come again!
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">NI</div>
+              <div>
+                <h4>Nurul Izzah</h4>
+                <span style="font-size: 0.85rem; color: #999"
+                  >2 minggu lalu</span
+                >
+              </div>
+            </div>
+            <div style="color: #ffd700">★★★★★</div>
+          </div>
+          <p style="color: #666; line-height: 1.7">
+            Perfect untuk solo traveler! Bilik tak besar sangat tapi cukup
+            selesa. Pemandangan cantik. Staff friendly. Dapat jimat banyak
+            berbanding bilik lain tapi quality tetap maintain!
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">ZA</div>
+              <div>
+                <h4>Zulkifli Ahmad</h4>
+                <span style="font-size: 0.85rem; color: #999"
+                  >3 minggu lalu</span
+                >
+              </div>
+            </div>
+            <div style="color: #ffd700">★★★★☆</div>
+          </div>
+          <p style="color: #666; line-height: 1.7">
+            Good value for money. Bilik basic tapi clean and comfortable. Meja
+            kerja ada, WiFi stable untuk online meeting. Recommended untuk yang
+            nak jimat budget tapi nak quality ok.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Orkid Resort. Semua hak cipta terpelihara.</p>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </footer>
+  </body>
+</html>

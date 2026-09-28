@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Bilik-bilik mewah di Orkid Resort" />
+    <title>Bilik - Orkid Resort</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+        min-height: 100vh;
+      }
+
+      /* HEADER */
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      header h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.8s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      nav li {
+        display: inline-block;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* PAGE HEADER */
+      .page-header {
+        text-align: center;
+        padding: 60px 20px 40px;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1) 0%,
+          rgba(118, 75, 162, 0.1) 100%
+        );
+      }
+
+      .page-header h2 {
+        font-size: 2.8rem;
+        color: #667eea;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* MAIN CONTENT */
+      main {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        align-items: start;
+      }
+
+      /* ROOM CARDS */
+      .Room {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        animation: fadeInUp 0.6s ease-out backwards;
+      }
+
+      .Room:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .Room:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .Room:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .Room:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+      }
+
+      .Room-image-container {
+        position: relative;
+        overflow: hidden;
+        height: 250px;
+        background: #f0f0f0;
+      }
+
+      .Room img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .Room:hover img {
+        transform: scale(1.1);
+      }
+
+      .room-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .Room-content {
+        padding: 30px;
+      }
+
+      .Room h3 {
+        color: #667eea;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .Room-info {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .info-icon {
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+
+      .Room p {
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .Room a {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      .Room a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+
+      footer p {
+        margin-bottom: 15px;
+        font-size: 1rem;
+      }
+
+      .social-links {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .social-links a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        background: rgba(102, 126, 234, 0.1);
+      }
+
+      .social-links a:hover {
+        background: rgba(102, 126, 234, 0.2);
+        transform: translateY(-2px);
+        color: #764ba2;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        nav a {
+          padding: 8px 20px;
+          font-size: 1rem;
+        }
+
+        .page-header h2 {
+          font-size: 2rem;
+        }
+
+        .page-header p {
+          font-size: 1rem;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+          padding: 30px 15px;
+          gap: 30px;
+        }
+
+        .Room h3 {
+          font-size: 1.5rem;
+        }
+
+        .Room-image-container {
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1.5rem;
+          letter-spacing: 1px;
+        }
+
+        .page-header h2 {
+          font-size: 1.6rem;
+        }
+
+        .Room-content {
+          padding: 20px;
+        }
+
+        .Room a {
+          padding: 10px 25px;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ORKID RESORT</h1>
+      <nav>
+        <ul>
+          <li><a href="orkid_resort_improved.html">Home</a></li>
+          <li><a href="orkid_resort_rooms.html">Room</a></li>
+          <li><a href="orkid_resort_contact.html">Contact</a></li>
+          <li><a href="orkid_resort_about_us_page.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <h2>Bilik-Bilik Kami</h2>
+      <p>
+        Pilih bilik yang sesuai dengan keperluan anda untuk pengalaman menginap
+        yang tidak dapat dilupakan
+      </p>
+    </div>
+
+    <main>
+      <section class="Room">
+        <div class="Room-image-container">
+          <img
+            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800"
+            alt="Executive Room"
+            loading="lazy"
+          />
+          <span class="room-badge">Premium</span>
+        </div>
+        <div class="Room-content">
+          <h3>Executive Room</h3>
+          <div class="Room-info">
+            <div class="info-item">
+              <span class="info-icon">📐</span>
+              <span>240 sqm / 2,583 sqf</span>
+            </div>
+          </div>
+          <p>
+            Nikmati pemandangan panoramik yang menakjubkan. Ruang yang luas
+            untuk keselesaan maksimum anda.
+          </p>
+          <a href="orkid_resort_room_details_executive.html">Lihat Detail</a>
+        </div>
+      </section>
+
+      <section class="Room">
+        <div class="Room-image-container">
+          <img
+            src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800"
+            alt="Royal Room"
+            loading="lazy"
+          />
+          <span class="room-badge">Exclusive</span>
+        </div>
+        <div class="Room-content">
+          <h3>Royal Room</h3>
+          <div class="Room-info">
+            <div class="info-item">
+              <span class="info-icon">📐</span>
+              <span>39 sqm / 419 sqf</span>
+            </div>
+          </div>
+          <p>
+            Pemandangan megah ke bandar atau taman hotel. Pengalaman penginapan
+            yang diraja dengan sentuhan moden.
+          </p>
+          <a href="orkid_resort_royal_room.html">Lihat Detail</a>
+        </div>
+      </section>
+
+      <section class="Room">
+        <div class="Room-image-container">
+          <img
+            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"
+            alt="Single Room"
+            loading="lazy"
+          />
+          <span class="room-badge">Cozy</span>
+        </div>
+        <div class="Room-content">
+          <h3>Single Room</h3>
+          <div class="Room-info">
+            <div class="info-item">
+              <span class="info-icon">📐</span>
+              <span>39 sqm / 419 sqf</span>
+            </div>
+          </div>
+          <p>
+            Pemandangan indah ke bandar yang tidak dapat dilupakan. Sesuai untuk
+            pelancong solo atau pasangan.
+          </p>
+          <a href="orkid_resort_single_room_page.html">Lihat Detail</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Orkid Resort. Semua hak cipta terpelihara.</p>
+      <div class="social-links">
+        <p style="width: 100%; margin: 10px 0">Ikuti Kami:</p>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+      </div>
+    </footer>
+  </body>
+</html>

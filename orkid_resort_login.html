@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Log masuk ke akaun ahli Orkid Resort" />
+    <title>Log Masuk - Orkid Resort</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* HEADER */
+      header {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      header h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.8s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      nav li {
+        display: inline-block;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* MAIN CONTENT */
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .login-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 1000px;
+        width: 100%;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* LEFT SIDE - INFO */
+      .login-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .login-info::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: pulse 15s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .login-info-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .login-info h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .login-info p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        line-height: 1.8;
+        opacity: 0.95;
+      }
+
+      .benefits-list {
+        list-style: none;
+        margin-top: 30px;
+      }
+
+      .benefits-list li {
+        padding: 15px 0;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .benefits-list li::before {
+        content: '✓';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      /* RIGHT SIDE - FORM */
+      .login-form-container {
+        padding: 60px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .login-form-container h3 {
+        font-size: 2rem;
+        color: #667eea;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .login-form-container .subtitle {
+        color: #666;
+        margin-bottom: 40px;
+        font-size: 1rem;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 1.2rem;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+        background: #f9f9f9;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .form-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        font-size: 0.9rem;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .remember-me input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .forgot-password {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        margin-bottom: 20px;
+      }
+
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .divider {
+        text-align: center;
+        margin: 25px 0;
+        position: relative;
+      }
+
+      .divider::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        background: #e0e0e0;
+      }
+
+      .divider span {
+        background: white;
+        padding: 0 15px;
+        color: #999;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .social-login {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .social-btn {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .social-btn:hover {
+        border-color: #667eea;
+        background: #f9f9f9;
+        transform: translateY(-2px);
+      }
+
+      .register-link {
+        text-align: center;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .register-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* FOOTER */
+      footer {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 968px) {
+        .login-container {
+          grid-template-columns: 1fr;
+        }
+
+        .login-info {
+          padding: 40px 30px;
+        }
+
+        .login-info h2 {
+          font-size: 2rem;
+        }
+
+        .benefits-list {
+          margin-top: 20px;
+        }
+
+        .login-form-container {
+          padding: 40px 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 5px;
+        }
+
+        nav a {
+          padding: 8px 20px;
+          font-size: 1rem;
+        }
+
+        .login-info h2 {
+          font-size: 1.8rem;
+        }
+
+        .login-info p {
+          font-size: 1rem;
+        }
+
+        .login-form-container h3 {
+          font-size: 1.6rem;
+        }
+
+        .social-login {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1.5rem;
+          letter-spacing: 1px;
+        }
+
+        .login-container {
+          margin: 20px 10px;
+        }
+
+        .login-info {
+          padding: 30px 20px;
+        }
+
+        .login-form-container {
+          padding: 30px 20px;
+        }
+
+        .form-options {
+          flex-direction: column;
+          gap: 15px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ORKID RESORT</h1>
+      <nav>
+        <ul>
+          <li><a href="orkid_resort_improved.html">Home</a></li>
+          <li><a href="orkid_resort_rooms.html">Room</a></li>
+          <li><a href="orkid_resort_contact.html">Contact</a></li>
+          <li><a href="orkid_resort_about_us_page.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="login-container">
+        <!-- LEFT SIDE - INFO -->
+        <div class="login-info">
+          <div class="login-info-content">
+            <h2>Selamat Kembali!</h2>
+            <p>
+              Log masuk untuk akses akaun ahli anda dan nikmati pelbagai faedah
+              eksklusif
+            </p>
+
+            <ul class="benefits-list">
+              <li>Lihat sejarah tempahan anda</li>
+              <li>Akses diskaun eksklusif ahli</li>
+              <li>Jejak mata ganjaran loyalty</li>
+              <li>Tempahan lebih cepat & mudah</li>
+              <li>Terima promosi khas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE - FORM -->
+        <div class="login-form-container">
+          <h3>Log Masuk</h3>
+          <p class="subtitle">Masukkan maklumat akaun anda</p>
+
+          <form>
+            <div class="form-group">
+              <label for="email">E-mel</label>
+              <div class="input-wrapper">
+                <span class="input-icon">📧</span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="contoh@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Kata Laluan</label>
+              <div class="input-wrapper">
+                <span class="input-icon">🔒</span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Masukkan kata laluan"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="remember" />
+                <span>Ingat saya</span>
+              </label>
+              <a href="#" class="forgot-password">Lupa kata laluan?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Log Masuk</button>
+          </form>
+
+          <div class="divider">
+            <span>Atau log masuk dengan</span>
+          </div>
+
+          <div class="social-login">
+            <button class="social-btn"><span>📘</span> Facebook</button>
+            <button class="social-btn"><span>🔍</span> Google</button>
+          </div>
+
+          <div class="register-link">
+            Belum menjadi ahli?
+            <a href="orkid_resort_register.html">Daftar sekarang</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Orkid Resort. Semua hak cipta terpelihara.</p>
+    </footer>
+  </body>
+</html>

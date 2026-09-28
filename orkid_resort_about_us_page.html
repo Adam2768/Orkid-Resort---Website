@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tentang Orkid Resort - Sejarah, Visi & Misi"
+    />
+    <title>Tentang Kami - Orkid Resort</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f5f5f5;
+      }
+
+      /* HEADER */
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+      header h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      nav {
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* HERO SECTION */
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600')
+            no-repeat center center/cover;
+        color: white;
+        padding: 120px 20px;
+        text-align: center;
+      }
+      .hero-section h2 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease-out;
+      }
+      .hero-section p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-out 0.2s backwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* CONTAINER */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+      }
+
+      /* STORY SECTION */
+      .story-section {
+        background: white;
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 60px;
+      }
+      .story-section h3 {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .story-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+      .story-text {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: #666;
+      }
+      .story-text p {
+        margin-bottom: 20px;
+      }
+      .story-image {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .story-image:hover img {
+        transform: scale(1.05);
+      }
+
+      /* VISION MISSION */
+      .vision-mission {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+      .vm-card {
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: all 0.3s;
+      }
+      .vm-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+      }
+      .vm-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+      .vm-card h3 {
+        font-size: 2rem;
+        color: #667eea;
+        margin-bottom: 20px;
+      }
+      .vm-card p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+      }
+
+      /* VALUES SECTION */
+      .values-section {
+        background: white;
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 60px;
+      }
+      .values-section h3 {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .value-card {
+        text-align: center;
+        padding: 30px;
+        border-radius: 15px;
+        transition: all 0.3s;
+      }
+      .value-card:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(118, 75, 162, 0.1)
+        );
+        transform: translateY(-5px);
+      }
+      .value-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .value-card h4 {
+        font-size: 1.4rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .value-card p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      /* STATS SECTION */
+      .stats-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 80px 60px;
+        border-radius: 20px;
+        text-align: center;
+        margin-bottom: 60px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-top: 40px;
+      }
+      .stat-item {
+        padding: 20px;
+      }
+      .stat-number {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .stat-label {
+        font-size: 1.2rem;
+        opacity: 0.95;
+      }
+
+      /* TEAM SECTION */
+      .team-section {
+        background: white;
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 60px;
+      }
+      .team-section h3 {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+      .team-card {
+        text-align: center;
+        padding: 30px;
+        border-radius: 15px;
+        transition: all 0.3s;
+      }
+      .team-card:hover {
+        background: #f9f9f9;
+        transform: translateY(-5px);
+      }
+      .team-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      }
+      .team-card h4 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      .team-role {
+        color: #667eea;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .team-card p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      /* AWARDS SECTION */
+      .awards-section {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(118, 75, 162, 0.1)
+        );
+        padding: 60px;
+        border-radius: 20px;
+        margin-bottom: 60px;
+      }
+      .awards-section h3 {
+        font-size: 2.5rem;
+        color: #667eea;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+      .awards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+      .award-card {
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+      .award-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .award-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+      .award-card h4 {
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      .award-card p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      /* CTA SECTION */
+      .cta-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 80px 60px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .cta-section h3 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+      }
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-btn {
+        padding: 18px 45px;
+        background: white;
+        color: #667eea;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      .cta-btn.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+      .cta-btn.secondary:hover {
+        background: white;
+        color: #667eea;
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .social-links a {
+        color: #667eea;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: rgba(102, 126, 234, 0.1);
+        transition: all 0.3s;
+      }
+      .social-links a:hover {
+        background: rgba(102, 126, 234, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 968px) {
+        .hero-section h2 {
+          font-size: 2.5rem;
+        }
+        .story-content {
+          grid-template-columns: 1fr;
+        }
+        .vision-mission {
+          grid-template-columns: 1fr;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+        nav ul {
+          flex-direction: column;
+          gap: 5px;
+        }
+        .container {
+          padding: 40px 20px;
+        }
+        .story-section,
+        .values-section,
+        .stats-section,
+        .team-section,
+        .awards-section,
+        .cta-section {
+          padding: 30px 20px;
+        }
+        .hero-section {
+          padding: 80px 20px;
+        }
+        .hero-section h2 {
+          font-size: 2rem;
+        }
+        .stat-number {
+          font-size: 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ORKID RESORT</h1>
+      <nav>
+        <ul>
+          <li><a href="orkid_resort_improved.html">Home</a></li>
+          <li><a href="orkid_resort_rooms.html">Room</a></li>
+          <li><a href="orkid_resort_contact.html">Contact</a></li>
+          <li><a href="orkid_resort_about_us_page.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <h2>Tentang Orkid Resort</h2>
+      <p>
+        Destinasi percutian mewah yang menggabungkan keselesaan moden dengan
+        kehangatan hospitaliti Malaysia
+      </p>
+    </section>
+
+    <div class="container">
+      <!-- OUR STORY -->
+      <section class="story-section">
+        <h3>Kisah Kami</h3>
+        <div class="story-content">
+          <div class="story-text">
+            <p>
+              Orkid Resort telah menjadi simbol kemewahan dan keramahan sejak
+              ditubuhkan pada tahun 2015. Bermula dengan visi untuk mencipta
+              destinasi percutian yang menggabungkan keindahan alam semula jadi
+              dengan kemudahan moden, kami telah berkembang menjadi salah satu
+              resort paling dipercayai di Malaysia.
+            </p>
+            <p>
+              Terletak di lokasi strategik dengan pemandangan yang memukau,
+              setiap sudut Orkid Resort direka untuk memberikan pengalaman
+              menginap yang tidak dapat dilupakan. Kami berbangga dengan
+              komitmen kami terhadap kualiti, perkhidmatan cemerlang, dan
+              kepuasan tetamu.
+            </p>
+            <p>
+              Dengan pasukan yang berdedikasi dan berpengalaman, kami terus
+              berinovasi untuk memastikan setiap kunjungan anda adalah istimewa.
+              Dari bilik-bilik mewah hingga kemudahan bertaraf dunia, Orkid
+              Resort adalah rumah kedua anda.
+            </p>
+          </div>
+          <div class="story-image">
+            <img
+              src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800"
+              alt="Orkid Resort"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- VISION & MISSION -->
+      <div class="vision-mission">
+        <div class="vm-card">
+          <div class="vm-icon">🎯</div>
+          <h3>Visi Kami</h3>
+          <p>
+            Menjadi resort pilihan utama yang dikenali kerana kecemerlangan
+            dalam perkhidmatan, inovasi berterusan, dan pengalaman tetamu yang
+            luar biasa di seluruh Asia Tenggara.
+          </p>
+        </div>
+        <div class="vm-card">
+          <div class="vm-icon">🚀</div>
+          <h3>Misi Kami</h3>
+          <p>
+            Menyediakan penginapan berkualiti tinggi dengan perkhidmatan mesra,
+            mencipta kenangan indah untuk setiap tetamu, dan sentiasa
+            meningkatkan standard industri hospitaliti.
+          </p>
+        </div>
+      </div>
+
+      <!-- OUR VALUES -->
+      <section class="values-section">
+        <h3>Nilai-Nilai Kami</h3>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">❤️</div>
+            <h4>Keramahan</h4>
+            <p>
+              Setiap tetamu dilayan seperti keluarga dengan kehangatan dan
+              keikhlasan yang tulen
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⭐</div>
+            <h4>Kecemerlangan</h4>
+            <p>
+              Komitmen untuk memberikan perkhidmatan terbaik dalam setiap aspek
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌱</div>
+            <h4>Kelestarian</h4>
+            <p>
+              Menjaga alam sekitar dan mempraktikkan operasi yang
+              bertanggungjawab
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h4>Integriti</h4>
+            <p>
+              Beroperasi dengan jujur, telus dan memegang teguh etika perniagaan
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats-section">
+        <h3 style="font-size: 2.5rem; margin-bottom: 20px">Pencapaian Kami</h3>
+        <p style="font-size: 1.2rem; opacity: 0.95">
+          Angka-angka yang membuktikan komitmen kami
+        </p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Tahun Pengalaman</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Tetamu Gembira</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Bilik & Suite</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4.8</div>
+            <div class="stat-label">Rating Purata</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="team-section">
+        <h3>Pasukan Kami</h3>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">DA</div>
+            <h4>Dato' Adam Haikal</h4>
+            <p class="team-role">Chief Executive Officer</p>
+            <p>
+              Memimpin dengan visi untuk menjadikan Orkid Resort destinasi
+              hospitaliti bertaraf dunia
+            </p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">DN</div>
+            <h4>Dato' Amjad Najdi</h4>
+            <p class="team-role">General Manager</p>
+            <p>
+              Mengurus operasi harian dengan fokus kepada kepuasan tetamu dan
+              kecemerlangan perkhidmatan
+            </p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">MF</div>
+            <h4>Mohd Faizal Karim</h4>
+            <p class="team-role">Head of Operations</p>
+            <p>
+              Memastikan semua kemudahan berfungsi dengan sempurna untuk
+              pengalaman tetamu yang lancar
+            </p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">LT</div>
+            <h4>Linda Tan</h4>
+            <p class="team-role">Guest Relations Manager</p>
+            <p>
+              Berdedikasi untuk memberikan perkhidmatan istimewa dan menangani
+              keperluan tetamu
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AWARDS -->
+      <section class="awards-section">
+        <h3>Anugerah & Pengiktirafan</h3>
+        <div class="awards-grid">
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <h4>Best Resort 2024</h4>
+            <p>Malaysia Tourism Awards</p>
+          </div>
+          <div class="award-card">
+            <div class="award-icon">⭐</div>
+            <h4>5-Star Rating</h4>
+            <p>TripAdvisor Excellence</p>
+          </div>
+          <div class="award-card">
+            <div class="award-icon">🌿</div>
+            <h4>Green Hotel Award</h4>
+            <p>Sustainable Tourism</p>
+          </div>
+          <div class="award-card">
+            <div class="award-icon">💎</div>
+            <h4>Luxury Resort</h4>
+            <p>Asia Hospitality Awards</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <h3>Alami Orkid Resort Sendiri</h3>
+        <p>
+          Tempah penginapan anda hari ini dan rasai pengalaman hospitaliti yang
+          luar biasa
+        </p>
+        <div class="cta-buttons">
+          <a href="orkid_resort_rooms.html" class="cta-btn">Lihat Bilik Kami</a>
+          <a href="orkid_resort_contact.html" class="cta-btn secondary"
+            >Hubungi Kami</a
+          >
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Orkid Resort. Semua hak cipta terpelihara.</p>
+      <div class="social-links">
+        <p style="width: 100%; margin: 10px 0">Ikuti Kami:</p>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </footer>
+  </body>
+</html>
